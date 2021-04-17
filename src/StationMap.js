@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import License_Key from './License_Key';
+import stationsData from "./StationData";
 
 const mapStyles = {
     width: '100%',
     height: '100%',
-    position: 'absolute'
+    position: 'relative'
 };
 
 export class MapContainer extends Component {
@@ -32,13 +33,24 @@ export class MapContainer extends Component {
         }
     };
 
+    list_of_Markers = stationsData.map((data) => //Find a way to generate
+        <Marker>
+            name={data.name}
+            status={{current: data.available, total: data.total}}         {/* find a way to consolidate the status into one variable like this status={{available: 110, total: 200}} */}
+            position= {{lat: data.pos.lat, lng: data.pos.lng}}
+            onClick={this.onMarkerClick}
+        </Marker>      
+    );
+
     render() {
         return (
             <Map style={mapStyles}
                  google={this.props.google}
                  initialCenter={{ lat: 40.912384, lng: -73.123271 }}
                  zoom={14}
+                 disableDefaultUI={true}
             >
+
                 <Marker
                     name={"West Apartments I"}
                     position={{lat: 40.913378, lng: -73.134329}}
@@ -59,7 +71,7 @@ export class MapContainer extends Component {
                 />
 
                 <Marker
-                    name={'Life Sciences 2'}
+                    name={'Life Sciences'}
                     position={{lat: 40.911422, lng: -73.120797}}
                     onClick={this.onMarkerClick}
                 />
@@ -117,13 +129,13 @@ export class MapContainer extends Component {
                     visible={this.state.showingInfoWindow}
                     onClose={this.onClose}
                 >
-
                     <div>
-                        {this.state.selectedPlace.name}
+                        <h5>{this.state.selectedPlace.name}</h5>
+                        <h6>{"Available / Total"}</h6>
+                        {/* <h6>{this.state.selectedPlace.position + " / " + this.state.selectedPlace.position}</h6> */}
                     </div>
-
+                    
                 </InfoWindow>
-
 
             </Map>
 

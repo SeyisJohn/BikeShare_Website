@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {ListGroup} from "react-bootstrap";
 import stationsData from "./StationData";
+import style from "./List.module.css"
 
 
 /*This will be important for three reasons
@@ -8,33 +9,24 @@ import stationsData from "./StationData";
  * Second: Creating react components with names
  * Third: Connecting the markers with the individual list item
  * Remove the action variant with action onClick
- * Find out how to a new line in the list group & how to change the text inside of the list
+ * Find out how to create a new line in the list group & how to change the text inside of the list
  */
 const listItems = stationsData.map((stat) =>
-                <ListGroup.Item key={stat.key} action>
-                    <p>
-                        {stat.name} <br/>
-                        Available: {stat.available} <br/>
-                        Total: {stat.total}</p>
+                <ListGroup.Item className={style.no_border} key={stat.key} action>
+                        <b>{stat.name}</b> <br/>
+                        Available: <b>{stat.available}</b> <br/>
+                        Total: {stat.total}
                 </ListGroup.Item>
 );
 
 /* Find a way to fill in the state objects */
 
-const liststyle = {
-    maxHeight: `800px`, //Fix this because the website needs to be responsive
-    maxWidth: '100%',
-    overflow:`scroll`,
-    overflowX: `hidden`,
-    position: `relative`,
-    display: `inline-block`
-};
 
 export class Stations extends Component{
 
     render() {
         return(
-            <ListGroup style={liststyle}>
+            <ListGroup className={style.list_style}>
                 {listItems}
             </ListGroup>
         );

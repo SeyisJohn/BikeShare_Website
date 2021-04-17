@@ -7,7 +7,7 @@ function Header() {
 
     return (
 
-        <Navbar sticky="top" expand="lg" bg="dark" variant="dark">
+        <Navbar sticky="top" expand="lg" bg="dark" variant="dark" style={{width: `100%`, whiteSpace: `nowrap`}}>
 
             <Col>
                 <Navbar.Brand href="/home">
@@ -41,14 +41,13 @@ function Header() {
                         <Nav.Link href="/Contact Us">Contact Us</Nav.Link>
                     </NavItem>
                 </Nav>
-
+                {/* 
                 <Nav className = "ml-auto justify-content-end">
                     <NavItem>
                         <Nav.Link href="/Log In">Log In</Nav.Link>
                     </NavItem>
-
-
-                </Nav>
+                </Nav> 
+                */}
             </Navbar.Collapse>
         </Navbar>
 
