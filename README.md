@@ -1,3 +1,9 @@
+# BikeShare Website
+
+This project was intended to be display the status of bikes at their bike stations. 
+
+-----------------------------------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
